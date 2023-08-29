@@ -1,19 +1,26 @@
 import { useEffect, useState } from "react";
 import { Layout } from "antd";
-import { useSpring, animated } from "react-spring";
 import "../styles/header.scss";
 
-function Header({transparency: boolean}) {
 
+function Header() {
+  const [isTransparent, setIsTransparent] = useState(false);
 
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      const currentScrollPos = window.scrollY;
+      if (currentScrollPos > 0) {
+        setIsTransparent(true);
+      } else {
+        setIsTransparent(false);
+      }
+    });
+  }, []);
 
   return (
-    <animated.div style={props.style}>
-        <Layout.Header className={`header`}>
+    <Layout.Header className={`header ${!isTransparent ? "transparent" : ""}`}>
       AAAA
     </Layout.Header>
-    </animated.div>
-    
   );
 }
 
