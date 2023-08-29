@@ -1,16 +1,20 @@
-import { Button, Layout } from "antd"
+import { useEffect, useState } from "react";
+import { Layout } from "antd";
+import { useSpring, animated } from "react-spring";
+import "../styles/header.scss";
 
-import '../styles/header.scss'
+function Header({transparency: boolean}) {
 
 
-function Header() {
-    return (
-        <Layout.Header>
-            <div className="header">
-                AAAA
-            </div>
-        </Layout.Header>
-    )
+
+  return (
+    <animated.div style={props.style}>
+        <Layout.Header className={`header`}>
+      AAAA
+    </Layout.Header>
+    </animated.div>
+    
+  );
 }
 
-export default Header
+export default Header;
